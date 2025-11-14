@@ -264,30 +264,61 @@ const App = () => {
 
       {/* About Section */}
       <section className="py-20 bg-white">
-        <motion.div 
-        className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
-        initial={{opacity: 0, y:40}}
-        whileInView={{opacity: 1, y: 0}}
-        transition={{duration: 0.8, ease: "easeIn", delay: 0.2}}
-        viewport={{ once: true}}
+  <motion.div
+    className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, ease: "easeIn", delay: 0.2 }}
+    viewport={{ once: true }}
+  >
+    <h2 className="text-3xl sm:text-4xl font-bold text-[#0d1b2a] mb-6">
+      Actividad de la Empresa
+    </h2>
+
+    <div className="w-20 h-1 bg-[linear-gradient(to_right,#0d1b2a,#042e5d)] mx-auto mb-12"></div>
+
+    {/* Grid de Cards */}
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {[
+        {
+          title: "Compra de Terrenos",
+          desc: "Adquisición estratégica en zonas con potencial de desarrollo."
+        },
+        {
+          title: "Diseño Arquitectónico",
+          desc: "Planos elaborados por profesionales para optimizar funcionalidad y estética."
+        },
+        {
+          title: "Construcción de Edificios",
+          desc: "Obras con materiales de calidad y supervisión técnica constante."
+        },
+        {
+          title: "Venta de Departamentos",
+          desc: "Asesoramiento personalizado durante el proceso de compra."
+        },
+        {
+          title: "Entrega Final",
+          desc: "Control de calidad y entrega de llaves al nuevo propietario."
+        }
+      ].map((item, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: index * 0.1 }}
+          className="bg-white border border-gray-200 rounded-2xl shadow-md p-6 text-left hover:shadow-lg transition-shadow duration-300"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#0d1b2a] mb-6">
-            Sobre Grupo Briones
-          </h2>
-          <div className="w-20 h-1 bg-linear-to-r from-[#0d1b2a] to-[#042e5d] mx-auto mb-8"></div>
-          <p className="text-lg text-gray-700 leading-relaxed mb-6">
-            Grupo Briones nace de la visión de crear desarrollos inmobiliarios que combinen 
-            calidad, diseño y accesibilidad. Con un equipo altamente especializado y años 
-            de experiencia en el mercado inmobiliario de Buenos Aires, nos dedicamos a 
-            transformar espacios en hogares.
-          </p>
-          <p className="text-lg text-gray-700 leading-relaxed">
-            Nuestro compromiso es acompañarte en cada etapa del proceso, desde la elección 
-            del departamento ideal hasta la entrega de llaves, garantizando transparencia, 
-            calidad constructiva y atención personalizada.
-          </p>
+          <div className="text-[#0d1b2a] text-3xl mb-4">🏗️</div>
+          <h3 className="text-xl font-semibold text-[#0d1b2a] mb-2">
+            {item.title}
+          </h3>
+          <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
         </motion.div>
-      </section>
+      ))}
+    </div>
+  </motion.div>
+</section>
 
       {/* Reviews Section */}
       <section className="py-20 bg-linear-to-br from-[#0d1b2a] via-[#042e5d] to-[#0d1b2a] text-white">
