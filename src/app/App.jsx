@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import React, { useState } from 'react';
 import { Building2, Users, Ruler, MapPin, Phone, Mail, Star, BrickWall, MapPinCheck, HardHat, KeyRound, Handshake } from 'lucide-react';
 import CountUp from "react-countup";
-import Image from "next/image";
+import { FaWhatsapp, FaInstagram, FaTiktok} from "react-icons/fa"
 
 const App = () => {
   const [formData, setFormData] = useState({
@@ -451,6 +451,14 @@ const App = () => {
           </motion.div>
         </div>
       </section>
+       <a
+      href="https://wa.me/5491131135466"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-transform transform hover:scale-110"
+    >
+      <FaWhatsapp className="w-8 h-8" />
+    </a>
 
       {/* Footer */}
       <footer className="bg-[#0d1b2a] text-white py-12">
@@ -479,10 +487,10 @@ const App = () => {
               <h4 className="font-semibold mb-4">Seguinos</h4>
               <div className="flex gap-4">
                 <a href="#" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors">
-                  IG
+                <FaInstagram className="w-6 h-6"/>  
                 </a>
                 <a href="#" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors">
-                  TT
+                  <FaTiktok className="w-6 h-6" />
                 </a>
               </div>
             </div>
