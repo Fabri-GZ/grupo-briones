@@ -2,8 +2,9 @@
 
 import { motion } from "framer-motion";
 import React, { useState } from 'react';
-import { Building2, Users, Ruler, MapPin, Phone, Mail, Star, BrickWall } from 'lucide-react';
+import { Building2, Users, Ruler, MapPin, Phone, Mail, Star, BrickWall, MapPinCheck, HardHat, KeyRound, Handshake } from 'lucide-react';
 import CountUp from "react-countup";
+import Image from "next/image";
 
 const App = () => {
   const [formData, setFormData] = useState({
@@ -87,6 +88,33 @@ const App = () => {
     'Colegiales',
     'Villa Crespo'
   ];
+  const activities = [
+    {
+    title: "Compra de Terrenos",
+    desc: "Adquisición estratégica en zonas con potencial de desarrollo.",
+    icon: MapPinCheck
+  },
+  {
+    title: "Diseño Arquitectónico",
+    desc: "Planos elaborados por profesionales para optimizar funcionalidad y estética.",
+    icon: HardHat
+  },
+  {
+    title: "Construcción de Edificios",
+    desc: "Obras con materiales de calidad y supervisión técnica constante.",
+    icon: Building2
+  },
+  {
+    title: "Venta de Departamentos",
+    desc: "Asesoramiento personalizado durante el proceso de compra.",
+    icon: Handshake
+  },
+  {
+    title: "Entrega Final",
+    desc: "Control de calidad y entrega de llaves al nuevo propietario.",
+    icon: KeyRound
+  }
+  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -108,10 +136,10 @@ const App = () => {
               viewport={{ once: true }}
             >
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                Tu Próximo Hogar en CABA
+                Grupo Briones
               </h1>
               <p className="text-xl sm:text-2xl text-gray-300">
-                Desarrollos inmobiliarios de calidad desde USD 100.000
+                Tu Próximo Hogar en CABA
               </p>
               <p className="text-lg text-gray-400">
                 Con más de 450 departamentos entregados, somos especialistas en construir espacios que transforman vidas.
@@ -160,9 +188,9 @@ const App = () => {
                     name="propertyType"
                     value={formData.propertyType}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#042e5d] focus:border-transparent text-gray-900"
+                    className="w-full px-4 py-3 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#042e5d] focus:border-transparent text-gray-900"
                   >
-                    <option value="">Seleccionar...</option>
+                    <option value="" disabled>Seleccionar:</option>
                     {propertyTypes.map((type) => (
                       <option key={type} value={type}>{type}</option>
                     ))}
@@ -179,7 +207,7 @@ const App = () => {
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#042e5d] focus:border-transparent text-gray-900"
                   >
-                    <option value="">Seleccionar...</option>
+                    <option value="" disabled>Seleccionar:</option>
                     {zones.map((zone) => (
                       <option key={zone} value={zone}>{zone}</option>
                     ))}
@@ -279,44 +307,29 @@ const App = () => {
 
     {/* Grid de Cards */}
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      {[
-        {
-          title: "Compra de Terrenos",
-          desc: "Adquisición estratégica en zonas con potencial de desarrollo."
-        },
-        {
-          title: "Diseño Arquitectónico",
-          desc: "Planos elaborados por profesionales para optimizar funcionalidad y estética."
-        },
-        {
-          title: "Construcción de Edificios",
-          desc: "Obras con materiales de calidad y supervisión técnica constante."
-        },
-        {
-          title: "Venta de Departamentos",
-          desc: "Asesoramiento personalizado durante el proceso de compra."
-        },
-        {
-          title: "Entrega Final",
-          desc: "Control de calidad y entrega de llaves al nuevo propietario."
-        }
-      ].map((item, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: index * 0.1 }}
-          className="bg-white border border-gray-200 rounded-2xl shadow-md p-6 text-left hover:shadow-lg transition-shadow duration-300"
-        >
-          <div className="text-[#0d1b2a] text-3xl mb-4">🏗️</div>
-          <h3 className="text-xl font-semibold text-[#0d1b2a] mb-2">
-            {item.title}
-          </h3>
-          <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
-        </motion.div>
-      ))}
-    </div>
+      {activities.map((item, index) => {
+        const Icon = item.icon;
+      
+        return (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
+            className="bg-white border border-gray-200 rounded-2xl shadow-md p-6 text-left hover:shadow-lg transition-shadow duration-300"
+          >
+            <div className="text-[#0d1b2a] text-3xl mb-4">
+              <Icon />
+            </div>
+            <h3 className="text-xl font-semibold text-[#0d1b2a] mb-2">
+              {item.title}
+            </h3>
+            <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+          </motion.div>
+        );
+      })}
+</div>
   </motion.div>
 </section>
 
@@ -454,7 +467,7 @@ const App = () => {
               <div className="space-y-2 text-gray-400">
                 <div className="flex items-center gap-2">
                   <Phone className="w-4 h-4" />
-                  <span>+54 11 XXXX-XXXX</span>
+                  <span>+54 11 3113 5466</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4" />
@@ -475,7 +488,7 @@ const App = () => {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Grupo Briones. Todos los derechos reservados.</p>
+            <p>&copy; 2025 Grupo Briones. Todos los derechos reservados.</p>
           </div>
         </div>
       </footer>
