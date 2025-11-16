@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import React, { useState } from 'react';
-import { Building2, Users, Ruler, MapPin, Phone, Mail, Star, BrickWall, MapPinCheck, HardHat, KeyRound, Handshake } from 'lucide-react';
+import { Building2, Users, Ruler, MapPin, Phone, Mail, Star, BrickWall, MapPinCheck, HardHat, KeyRound, Handshake, ChevronDown } from 'lucide-react';
 import CountUp from "react-countup";
 import { FaWhatsapp, FaInstagram, FaTiktok} from "react-icons/fa"
 
@@ -88,6 +88,7 @@ const App = () => {
     'Colegiales',
     'Villa Crespo'
   ];
+
   const activities = [
     {
     title: "Compra de Terrenos",
@@ -184,34 +185,40 @@ const App = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     ¿Qué tipo de departamento buscás?
                   </label>
-                  <select
-                    name="propertyType"
-                    value={formData.propertyType}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#042e5d] focus:border-transparent text-gray-900"
-                  >
-                    <option value="" disabled>Seleccionar:</option>
-                    {propertyTypes.map((type) => (
-                      <option key={type} value={type}>{type}</option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <select
+                      name="propertyType"
+                      value={formData.propertyType}
+                      onChange={handleChange}
+                      className="appearance-none focus:outline-none w-full px-4 py-3 pr-12 border-gray-300 rounded-lg border-2 focus:border-[#042e5d] text-gray-900 bg-white cursor-pointer transition-all duration-200"
+                      >
+                      <option value="" disabled>Seleccionar:</option>
+                      {propertyTypes.map((type) => (
+                        <option key={type} value={type}>{type}</option>
+                      ))}
+                    </select>
+                    <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 pointer-events-none" />
+                  </div>
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     ¿Cuál es tu zona de preferencia?
                   </label>
-                  <select
-                    name="zone"
-                    value={formData.zone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#042e5d] focus:border-transparent text-gray-900"
-                  >
-                    <option value="" disabled>Seleccionar:</option>
-                    {zones.map((zone) => (
-                      <option key={zone} value={zone}>{zone}</option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <select
+                      name="zone"
+                      value={formData.zone}
+                      onChange={handleChange}
+                      className="appearance-none focus:outline-none w-full px-4 py-3 pr-12 border-gray-300 rounded-lg border-2 focus:border-[#042e5d] text-gray-900 bg-white cursor-pointer transition-all duration-200"
+                      >
+                      <option value="" disabled>Seleccionar:</option>
+                      {zones.map((zone) => (
+                        <option key={zone} value={zone}>{zone}</option>
+                      ))}
+                    </select>
+                    <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 pointer-events-none" />
+                  </div>
                 </div>
 
                 <div>
@@ -221,7 +228,7 @@ const App = () => {
                     placeholder="Nombre completo*"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#042e5d] focus:border-transparent text-gray-900"
+                    className="w-full px-4 py-3 focus:outline-none border-gray-300 rounded-lg border-2 focus:border-[#042e5d] text-gray-900 transition-all duration-200"
                   />
                 </div>
 
@@ -232,7 +239,7 @@ const App = () => {
                     placeholder="Email*"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#042e5d] focus:border-transparent text-gray-900"
+                    className="w-full px-4 py-3 focus:outline-none border-gray-300 rounded-lg border-2 focus:border-[#042e5d] text-gray-900 transition-all duration-200"
                   />
                 </div>
 
@@ -243,7 +250,7 @@ const App = () => {
                     placeholder="Teléfono*"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#042e5d] focus:border-transparent text-gray-900"
+                    className="w-full px-4 py-3 focus:outline-none border-gray-300 rounded-lg border-2 focus:border-[#042e5d] text-gray-900 transition-all duration-200"
                   />
                 </div>
 
